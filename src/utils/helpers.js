@@ -77,6 +77,7 @@ export function calculateExpiryDate(durationLabel) {
 }
 
 export function getPageTitle(pathname) {
+  if (pathname === '/login') return 'Sign In';
   if (pathname === '/verify/failed') return 'Verification Failed';
   if (pathname.startsWith('/verify/result')) return 'Verification Result';
   const titles = {

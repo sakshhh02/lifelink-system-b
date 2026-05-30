@@ -2,10 +2,12 @@ import { useLocation } from 'react-router-dom';
 import { Bell, HelpCircle, Search } from 'lucide-react';
 import { getPageTitle } from '../../utils/helpers';
 import { useToast } from '../../context/ToastContext';
+import { useAuth } from '../../context/AuthContext';
 
 export default function TopBar() {
   const { pathname } = useLocation();
   const { showToast } = useToast();
+  const { user } = useAuth();
 
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center gap-6 border-b border-border bg-surface px-8">
@@ -42,8 +44,11 @@ export default function TopBar() {
         >
           <HelpCircle className="h-5 w-5" />
         </button>
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-medium text-white">
-          JD
+        <div
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-medium text-white"
+          title={user?.name}
+        >
+          {user?.initials || 'LL'}
         </div>
       </div>
     </header>

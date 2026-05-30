@@ -225,3 +225,15 @@ export const VAULT_CATEGORIES = [
   'Medical',
   'Legal',
 ];
+
+export const demoCredentials = {
+  email: 'demo@lifelink.edu',
+  password: 'demo1234',
+  user: {
+    id: 'user-001',
+    name: 'Jane Doe',
+    email: 'demo@lifelink.edu',
+    initials: 'JD',
+    role: 'Institutional Member',
+  },
+};

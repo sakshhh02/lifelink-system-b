@@ -9,6 +9,7 @@ import {
   HelpCircle,
   LogOut,
 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 const navItems = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -20,6 +21,12 @@ const navItems = [
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <aside className="fixed left-0 top-0 z-30 flex h-screen w-[260px] flex-col border-r border-border bg-surface">
@@ -64,7 +71,7 @@ export default function Sidebar() {
         </button>
         <button
           type="button"
-          onClick={() => navigate('/dashboard')}
+          onClick={handleLogout}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-danger transition duration-200 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-danger focus:ring-offset-2"
         >
           <LogOut className="h-5 w-5" />
